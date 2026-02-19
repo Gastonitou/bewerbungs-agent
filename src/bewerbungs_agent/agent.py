@@ -135,6 +135,7 @@ class BewerbungsAgent:
         
         # Process attachments if enabled
         attachment_text = None
+        attachments = []
         if self.features.get('analyze_attachments', True):
             attachments = self.gmail_client.get_attachments(message_id)
             if attachments:
