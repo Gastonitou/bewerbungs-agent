@@ -1,0 +1,45 @@
+# Example configuration file for the Bewerbungs-Agent
+# Copy this file to config.yaml and fill in your credentials
+
+gmail:
+  email: "ghassenlaajili6@gmail.com"
+  # OAuth2 credentials file path (download from Google Cloud Console)
+  credentials_file: "credentials.json"
+  # Token file will be created automatically after first authentication
+  token_file: "token.json"
+  
+  # Folder/Label names
+  folders:
+    rejections: "Absagen"  # For rejection emails
+    acceptances: "Zusagen"  # For acceptance emails
+    processed: "Verarbeitet"  # For all processed emails
+
+openai:
+  # Your OpenAI API key
+  api_key: "sk-..."
+  # Model to use for classification
+  model: "gpt-4"
+  # Temperature for responses (0.0 - 1.0, lower = more deterministic)
+  temperature: 0.3
+
+agent:
+  # Enable/disable different features
+  features:
+    classify_emails: true
+    analyze_attachments: true
+    move_to_folders: true
+    team_distribution: true
+  
+  # Agent team configuration
+  team:
+    - name: "Reviewer"
+      role: "Reviews application documents"
+    - name: "Feedback Writer"
+      role: "Writes feedback for applicants"
+    - name: "Scheduler"
+      role: "Schedules interviews"
+
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/agent.log"
+  console: true
