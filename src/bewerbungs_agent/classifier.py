@@ -51,7 +51,7 @@ class EmailClassifier:
         """
         if not self.client:
             logger.warning("OpenAI client not initialized, using fallback classification")
-            return self._fallback_classify(email_data)
+            return self._fallback_classify(email_data, attachment_text)
         
         try:
             # Prepare prompt
@@ -83,7 +83,7 @@ class EmailClassifier:
         
         except Exception as e:
             logger.error(f"Error classifying email: {e}")
-            return self._fallback_classify(email_data)
+            return self._fallback_classify(email_data, attachment_text)
     
     def _create_classification_prompt(self, email_data: Dict[str, Any], attachment_text: Optional[str]) -> str:
         """Create prompt for classification"""
@@ -114,19 +114,21 @@ class EmailClassifier:
         
         return "\n".join(prompt_parts)
     
-    def _fallback_classify(self, email_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _fallback_classify(self, email_data: Dict[str, Any], attachment_text: Optional[str] = None) -> Dict[str, Any]:
         """
         Fallback classification using keyword matching
         
         Args:
             email_data: Parsed email data
+            attachment_text: Optional text from attachments
             
         Returns:
             Classification result
         """
         subject = (email_data.get('subject') or '').lower()
         body = (email_data.get('body') or email_data.get('snippet', '')).lower()
-        content = f"{subject} {body}"
+        attachment_content = (attachment_text or '').lower()
+        content = f"{subject} {body} {attachment_content}"
         
         # Keywords for rejection
         rejection_keywords = [
