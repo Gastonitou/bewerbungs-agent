@@ -1,0 +1,60 @@
+# bewerbungs-agent configuration
+
+gmail:
+  # Path to the OAuth2 credentials file downloaded from Google Cloud Console
+  credentials_file: "credentials.json"
+  # Path where the OAuth2 token will be stored after first authorization
+  token_file: "token.json"
+  # Gmail account to monitor
+  email_address: "ghassenlaajili6@gmail.com"
+  # Gmail label used for incoming applications to process
+  inbox_label: "INBOX"
+  # Gmail label to move rejections (Absagen) into
+  rejection_label: "Absagen"
+  # Gmail label to move acceptances (Zusagen) into
+  acceptance_label: "Zusagen"
+  # Maximum number of emails to process per run
+  max_results: 50
+
+openai:
+  # OpenAI model used for email classification
+  model: "gpt-4o"
+  # Maximum tokens for classification prompt
+  max_tokens: 1024
+  # Temperature for classification (lower = more deterministic)
+  temperature: 0.2
+
+attachments:
+  # Supported MIME types for attachment processing
+  supported_types:
+    - "application/pdf"
+    - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    - "application/rtf"
+    - "text/rtf"
+  # Maximum attachment size in bytes to process (10 MB)
+  max_size_bytes: 10485760
+  # Temporary directory for attachment processing (never persisted)
+  temp_dir: "/tmp/bewerbungs_agent_attachments"
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  # Path to log file (relative to project root)
+  log_file: "bewerbungs_agent.log"
+  # Maximum log file size in bytes before rotation (5 MB)
+  max_bytes: 5242880
+  # Number of backup log files to keep
+  backup_count: 3
+
+agents:
+  # Virtual agent team members and their roles
+  team:
+    - name: "Reviewer"
+      role: "review"
+      description: "Reviews application documents for quality and completeness"
+    - name: "FeedbackWriter"
+      role: "feedback"
+      description: "Drafts polite rejection or acceptance feedback emails"
+    - name: "Archiver"
+      role: "archive"
+      description: "Archives processed applications with metadata"

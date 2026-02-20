@@ -1,0 +1,18 @@
+# OAuth2 credentials – never commit these
+credentials.json
+token.json
+
+# Log files
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Temp attachment directory
+/tmp/bewerbungs_agent_attachments/
