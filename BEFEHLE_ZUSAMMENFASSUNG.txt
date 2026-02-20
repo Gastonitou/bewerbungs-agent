@@ -1,0 +1,82 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║     BEWERBUNGS-AGENT - SCHNELLE BEFEHLSÜBERSICHT            ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📋 KOPIEREN SIE DIESE BEFEHLE EINFACH IN IHR TERMINAL!
+
+═══════════════════════════════════════════════════════════════
+1️⃣ GRUNDLEGENDE TESTS (KEINE ZUGANGSDATEN NÖTIG)
+═══════════════════════════════════════════════════════════════
+
+# Ins Verzeichnis wechseln
+cd /home/runner/work/bewerbungs-agent/bewerbungs-agent
+
+# Dependencies installieren (einmalig)
+pip install -r requirements.txt
+
+# Alle Tests ausführen (sollte 33/33 bestehen)
+python run_tests.py
+
+# Demo starten (zeigt alle Funktionen)
+python demo.py
+
+# Agent im Test-Modus starten
+python main.py --test-connection
+
+# Hilfe anzeigen
+python main.py --help
+
+═══════════════════════════════════════════════════════════════
+2️⃣ MIT ECHTEN E-MAILS (BENÖTIGT ZUGANGSDATEN)
+═══════════════════════════════════════════════════════════════
+
+# Konfiguration erstellen
+cp config.example.yaml config.yaml
+
+# Konfiguration bearbeiten (Ihre E-Mail eintragen)
+nano config.yaml
+
+# credentials.json von Google Cloud Console holen und ins 
+# Verzeichnis legen (siehe Anleitung)
+
+# Agent starten
+python main.py
+
+═══════════════════════════════════════════════════════════════
+3️⃣ ERWEITERTE BEFEHLE
+═══════════════════════════════════════════════════════════════
+
+# Nur 5 E-Mails verarbeiten
+python main.py --max-emails 5
+
+# E-Mails von bestimmtem Absender
+python main.py --query "from:hr@firma.de"
+
+# Mit Statistiken
+python main.py --stats
+
+═══════════════════════════════════════════════════════════════
+✅ SCHNELLTEST (ALLE BEFEHLE AUF EINMAL)
+═══════════════════════════════════════════════════════════════
+
+cd /home/runner/work/bewerbungs-agent/bewerbungs-agent
+pip install -r requirements.txt
+python run_tests.py
+python main.py --test-connection
+
+═══════════════════════════════════════════════════════════════
+📚 DOKUMENTATION
+═══════════════════════════════════════════════════════════════
+
+ANLEITUNG_SCHRITT_FÜR_SCHRITT.md  ← Detaillierte Anleitung
+SCHNELLSTART.md                     ← Kurze Übersicht
+TEST_ANLEITUNG.md                   ← Test-Details
+README.md                           ← Projekt-Info (Englisch)
+
+═══════════════════════════════════════════════════════════════
+
+🎯 TIPP: Beginnen Sie mit dem Schnelltest oben!
+
+═══════════════════════════════════════════════════════════════
