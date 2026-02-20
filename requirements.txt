@@ -1,0 +1,10 @@
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.120.0
+openai>=1.30.0
+pypdf>=3.0.0
+python-docx>=1.1.0
+PyMuPDF>=1.23.0
+pytesseract>=0.3.10
+Pillow>=10.0.0
+python-dotenv>=1.0.0
